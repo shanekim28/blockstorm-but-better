@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] float movementSpeed;
 	[SerializeField] float jumpSpeed;
 	[SerializeField] float wallRunDist;
-	[SerializeField] float wallrunMinVelocity;
 
 	float x;
 	float z;
@@ -83,7 +82,7 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		// Check this before jump, so a jump will override it.
-		if (Vector3.Dot(rb.velocity, transform.forward) >= wallrunMinVelocity && !grounded && wallrunCooldown == 0) {
+		if (!grounded && wallrunCooldown == 0) {
 			CheckWallRun();
 		}
 

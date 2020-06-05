@@ -33,7 +33,7 @@ public class MouseLook : MonoBehaviour {
 		xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
 		// Apply rotation based on mouse movement
-		// TODO - this monstrosity absolutely destroys performance. should fix.
+		// TODO - this is bad. should fix.
 		if (currentPlayerState == PlayerMovement.PlayerState.WallrunLeft) {
 			yRotation += mouseX;
 			yRotation = Mathf.Clamp(yRotation, -15f, 45f);
