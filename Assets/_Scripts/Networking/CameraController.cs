@@ -12,16 +12,20 @@ public class CameraController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        // Init rotations
         verticalRotation = transform.localEulerAngles.x;
         horizontalRotation = player.transform.eulerAngles.y;
     }
 
     // Update is called once per frame
     void Update() {
-        Look();
-        Debug.DrawRay(transform.position, transform.forward * 2, Color.green);
+        Look(); // Apply rotation
+        Debug.DrawRay(transform.position, transform.forward * 2, Color.green); // To see direction of player
     }
 
+    /// <summary>
+    /// Gets player mouse input to apply rotations locally
+    /// </summary>
     private void Look() {
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = -Input.GetAxis("Mouse Y");

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-/// <summary>Sent from server to client.</summary>
+
+/// <summary>Sent from server to client. Enumerated via unique packet ID</summary>
 public enum ServerPackets {
     welcome = 1,
     spawnPlayer,
@@ -10,7 +11,7 @@ public enum ServerPackets {
     playerRotation
 }
 
-/// <summary>Sent from client to server.</summary>
+/// <summary>Sent from client to server. Enumerated via unique packet ID</summary>
 public enum ClientPackets {
     welcomeReceived = 1,
     playerMovement
@@ -142,7 +143,6 @@ public class Packet : IDisposable {
         Write(_value.x);
         Write(_value.y);
         Write(_value.z);
-
     }
 
     /// <summary>Adds a Quaternion to the packet.</summary>
@@ -152,7 +152,6 @@ public class Packet : IDisposable {
         Write(_value.y);
         Write(_value.z);
         Write(_value.w);
-
     }
     #endregion
 
@@ -287,9 +286,18 @@ public class Packet : IDisposable {
         }
     }
 
+    /// <summary>
+    /// Reads a Vector3 from the packet.
+    /// </summary>
+    /// <param name="_moveReadPos">Whether or not to move the buffer's read position.</param>
     public Vector3 ReadVector3(bool _moveReadPos = true) {
         return new Vector3(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
     }
+
+    /// <summary>
+    /// Reads a Quaternion from the packet.
+    /// </summary>
+    /// <param name="_moveReadPos">Whether or not to move the buffer's read position.</param>
     public Quaternion ReadQuaternion(bool _moveReadPos = true) {
         return new Quaternion(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
     }

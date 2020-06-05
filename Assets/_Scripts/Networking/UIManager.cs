@@ -6,11 +6,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-	public static UIManager instance;
+	public static UIManager instance; // Singleton
 
 	public GameObject startMenu;
 	public InputField usernameField;
 
+    // Init singleton
     void Awake() {
         if (instance == null) {
             instance = this;
@@ -20,9 +21,13 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    // Connects to the server
     public void ConnectToServer() {
+        // Hide the stuff
         startMenu.SetActive(false);
         usernameField.interactable = false;
+
+        // Connect to the server via TCP
         Client.instance.ConnectToServer();
 	}
 }
