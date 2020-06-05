@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 /// <summary>Sent from server to client.</summary>
 public enum ServerPackets {
     welcome = 1,
-    udpTest
+    spawnPlayer,
+    playerPosition,
+    playerRotation
 }
 
 /// <summary>Sent from client to server.</summary>
 public enum ClientPackets {
     welcomeReceived = 1,
-    udpTestReceived
+    playerMovement
 }
 
 public class Packet : IDisposable {
@@ -132,6 +135,25 @@ public class Packet : IDisposable {
         Write(_value.Length); // Add the length of the string to the packet
         buffer.AddRange(Encoding.ASCII.GetBytes(_value)); // Add the string itself
     }
+
+    /// <summary>Adds a Vector3 to the packet.</summary>
+    /// <param name="_value">The Vector3 to add.</param>
+    public void Write(Vector3 _value) {
+        Write(_value.x);
+        Write(_value.y);
+        Write(_value.z);
+
+    }
+
+    /// <summary>Adds a Quaternion to the packet.</summary>
+    /// <param name="_value">The Quaternion to add.</param>
+    public void Write(Quaternion _value) {
+        Write(_value.x);
+        Write(_value.y);
+        Write(_value.z);
+        Write(_value.w);
+
+    }
     #endregion
 
     #region Read Data
@@ -252,6 +274,7 @@ public class Packet : IDisposable {
     /// <param name="_moveReadPos">Whether or not to move the buffer's read position.</param>
     public string ReadString(bool _moveReadPos = true) {
         try {
+
             int _length = ReadInt(); // Get the length of the string
             string _value = Encoding.ASCII.GetString(readableBuffer, readPos, _length); // Convert the bytes to a string
             if (_moveReadPos && _value.Length > 0) {
@@ -262,6 +285,13 @@ public class Packet : IDisposable {
         } catch {
             throw new Exception("Could not read value of type 'string'!");
         }
+    }
+
+    public Vector3 ReadVector3(bool _moveReadPos = true) {
+        return new Vector3(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
+    }
+    public Quaternion ReadQuaternion(bool _moveReadPos = true) {
+        return new Quaternion(ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos), ReadFloat(_moveReadPos));
     }
     #endregion
 

@@ -23,10 +23,17 @@ public class ClientSend : MonoBehaviour {
 			SendTCPData(packet);
 		}
 	}
-	
-	public static void UDPTestReceived() {
-		using (Packet packet = new Packet((int) ClientPackets.udpTestReceived)) {
-			packet.Write("Received a UDP packet.");
+
+	public static void PlayerMovement(bool[] inputs) {
+		using (Packet packet = new Packet((int) ClientPackets.playerMovement)) {
+			packet.Write(inputs.Length);
+			//Debug.Log("Send movement data");
+			foreach (bool input in inputs) {
+				packet.Write(input);
+			}
+
+			packet.Write(GameManager.players[Client.instance.myId].transform.rotation);
+
 			SendUDPData(packet);
 		}
 	}

@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System;
-using UnityEditor.UI;
-using System.Security.Policy;
 
 public class Client : MonoBehaviour {
     public static Client instance;
@@ -103,6 +100,8 @@ public class Client : MonoBehaviour {
         private bool HandleData(byte[] data) {
             int packetLength = 0;
 
+            //Array.Reverse(data);
+
             receivedData.SetBytes(data);
             if (receivedData.UnreadLength() >= 4) {
                 packetLength = receivedData.ReadInt();
@@ -168,6 +167,7 @@ public class Client : MonoBehaviour {
 
         private void ReceiveCallback(IAsyncResult result) {
             try {
+                //Debug.Log("Received UDP data");
                 byte[] data = socket.EndReceive(result, ref endpoint);
                 socket.BeginReceive(ReceiveCallback, null);
 
@@ -187,6 +187,7 @@ public class Client : MonoBehaviour {
                 data = packet.ReadBytes(packetLength);
 			}
 
+                    
             ThreadManager.ExecuteOnMainThread(() => {
                 using (Packet packet = new Packet(data)) {
                     int packetId = packet.ReadInt();
@@ -198,8 +199,10 @@ public class Client : MonoBehaviour {
 
     private void InitializeClientData() {
         packetHandlers = new Dictionary<int, PacketHandler>() {
-            {(int)ServerPackets.welcome, ClientHandle.Welcome },
-            {(int)ServerPackets.udpTest, ClientHandle.UDPTest }
+            { (int)ServerPackets.welcome, ClientHandle.Welcome },
+            { (int) ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },            
+            { (int) ServerPackets.playerPosition, ClientHandle.PlayerPosition },            
+            { (int) ServerPackets.playerRotation, ClientHandle.PlayerRotation},
         };
 
         Debug.Log("Initialized packets.");
