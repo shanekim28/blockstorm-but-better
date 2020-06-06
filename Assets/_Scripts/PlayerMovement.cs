@@ -155,13 +155,17 @@ public class PlayerMovement : MonoBehaviour {
 
 		bool wallToLeft = false;
 		bool wallToRight = false;
-	
 
-		if (Physics.Raycast(transform.position, -transform.right, out leftHit, wallRunDist) && Vector3.Dot(leftHit.normal, Vector3.up) == 0) {
+		Vector3 forwardAndRight = transform.forward + transform.right;
+		Vector3 forwardAndLeft = transform.forward - transform.right;
+
+		// Note: The "Forward and Side" check doesn't overwrite the "Side" hit data because the second term for an || operator isn't evaluated if the first is true
+
+		if ((Physics.Raycast(transform.position, -transform.right, out leftHit, wallRunDist) || Physics.Raycast(transform.position, forwardAndLeft, out leftHit, wallRunDist)) && Vector3.Dot(leftHit.normal, Vector3.up) == 0) {
 			wallToLeft = true;
 		}
 
-		if (Physics.Raycast(transform.position, transform.right, out rightHit, wallRunDist) && Vector3.Dot(rightHit.normal, Vector3.up) == 0) {
+		if ((Physics.Raycast(transform.position, transform.right, out rightHit, wallRunDist) || Physics.Raycast(transform.position, forwardAndRight, out rightHit, wallRunDist)) && Vector3.Dot(rightHit.normal, Vector3.up) == 0) {
 			wallToRight = true;
 		}
 
