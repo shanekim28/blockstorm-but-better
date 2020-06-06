@@ -6,8 +6,8 @@ public class MouseLook : MonoBehaviour {
 
 	float mouseSensitivity = 150f;
 
-	public Transform playerBody;
-	public PlayerMovement movement;
+	[SerializeField] Transform playerBody;
+	[SerializeField] PlayerMovement movement;
 	PlayerMovement.PlayerState currentPlayerState;
 
 	float xRotation = 0f;
