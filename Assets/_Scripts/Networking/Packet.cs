@@ -9,13 +9,16 @@ public enum ServerPackets {
     spawnPlayer,
     playerPosition,
     playerRotation,
-    playerDisconnected
+    playerDisconnected,
+    playerHealth,
+    playerRespawned,
 }
 
 /// <summary>Sent from client to server. Enumerated via unique packet ID</summary>
 public enum ClientPackets {
     welcomeReceived = 1,
-    playerMovement
+    playerMovement,
+    playerShoot,
 }
 
 public class Packet : IDisposable {

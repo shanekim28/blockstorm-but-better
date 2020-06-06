@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    /// <summary>
-    /// Gets input from player and sends it to the server
-    /// </summary>
-    void SendInputToServer() {
+    public Transform camTransform;
+
+	private void Update() {
+		if (Input.GetMouseButtonDown(0)) {
+            ClientSend.PlayerShoot(camTransform.forward);
+		}
+	}
+
+	/// <summary>
+	/// Gets input from player and sends it to the server
+	/// </summary>
+	void SendInputToServer() {
         bool[] inputs = new bool[] {
             Input.GetKey(KeyCode.W),
             Input.GetKey(KeyCode.A),

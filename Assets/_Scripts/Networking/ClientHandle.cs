@@ -20,6 +20,7 @@ public class ClientHandle : MonoBehaviour {
 		// Assign the client ID given by the server
 		Client.instance.myId = myId;
 		
+
 		// Tell the server the welcome message has been received
 		ClientSend.WelcomeReceived();
 
@@ -75,5 +76,19 @@ public class ClientHandle : MonoBehaviour {
 
 		Destroy(GameManager.players[id].gameObject);
 		GameManager.players.Remove(id);
+	}
+
+	public static void PlayerHealth(Packet packet) {
+		int id = packet.ReadInt();
+		float health = packet.ReadFloat();
+
+		GameManager.players[id].SetHealth(health);
+	}
+
+	public static void PlayerRespawned (Packet packet) {
+		int id = packet.ReadInt();
+
+		GameManager.players[id].Respawn();
+
 	}
 }

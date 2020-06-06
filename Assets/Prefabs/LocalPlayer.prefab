@@ -273,6 +273,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   username: 
+  health: 0
+  maxHealth: 100
+  model: {fileID: 132753691886109935}
 --- !u!114 &144123994174098431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,3 +288,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700e49bad9e12874f8c2c9dd4dff4465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTransform: {fileID: 1775616718457635131}
