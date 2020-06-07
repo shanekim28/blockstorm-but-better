@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 3346eb11b1695644faca955f5dbeeac4
+=======
+guid: 29eb09d4a58d2b7479c16a23706f1335
+>>>>>>> networking
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
