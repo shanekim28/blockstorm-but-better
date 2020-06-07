@@ -36,11 +36,11 @@ public class MouseLook : MonoBehaviour {
 		// TODO - this is bad. should fix.
 		if (currentPlayerState == PlayerMovement.PlayerState.WallrunLeft) {
 			yRotation += mouseX;
-			yRotation = Mathf.Clamp(yRotation, -15f, 45f);
+			yRotation = Mathf.Clamp(yRotation, -15f, 50f);
 			transform.localRotation = Quaternion.Slerp(Quaternion.Euler(xRotation, yRotation, transform.localEulerAngles.z), Quaternion.Euler(xRotation, yRotation, -10f), Time.deltaTime * lerpSpeed);
 		} else if (currentPlayerState == PlayerMovement.PlayerState.WallrunRight) {
 			yRotation += mouseX;
-			yRotation = Mathf.Clamp(yRotation, -45f, 15f);
+			yRotation = Mathf.Clamp(yRotation, -50f, 15f);
 			transform.localRotation = Quaternion.Slerp(Quaternion.Euler(xRotation, yRotation, transform.localEulerAngles.z), Quaternion.Euler(xRotation, yRotation, 10f), Time.deltaTime * lerpSpeed);
 		} else {
 			yRotation = 0;
