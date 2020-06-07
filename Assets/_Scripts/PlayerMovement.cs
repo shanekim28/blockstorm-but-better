@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour {
 	[SerializeField] float wallRunDist;
 	[SerializeField] float minWallrunSpeed;
 
+	[SerializeField] GrapplingGun grapple;
+	[SerializeField] Camera cam;
+
 	float x;
 	float z;
 	bool jumpButtonPressed;
@@ -82,8 +85,13 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 
+		// Check whether we're tethered
+		if (grapple.IsGrappling()) {
+			currentState = PlayerState.Grappling;
+		}
+
 		// Check this before jump, so a jump will override it.
-		if (Vector3.Dot(rb.velocity, transform.forward) > minWallrunSpeed && !grounded && wallrunCooldown == 0) {
+		if (!grounded && currentState != PlayerState.Grappling && Vector3.Dot(rb.velocity, transform.forward) > minWallrunSpeed && wallrunCooldown == 0) {
 			CheckWallRun();
 		}
 
@@ -200,9 +208,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	private void WallRun(Vector3 vectorAlongWall) {
-		Debug.DrawLine(transform.position, transform.position + vectorAlongWall);
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(vectorAlongWall, transform.up), Time.deltaTime * 10f);
-		rb.velocity = vectorAlongWall * movementSpeed;
+		// Wallrun and Wallclimb
+		rb.velocity = (vectorAlongWall + new Vector3(0, cam.transform.forward.y, 0)) * movementSpeed;
 	}
 
 	void Update() {

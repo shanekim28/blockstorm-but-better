@@ -9,6 +9,7 @@ public class MouseLook : MonoBehaviour {
 	[SerializeField] Transform playerBody;
 	[SerializeField] PlayerMovement movement;
 	PlayerMovement.PlayerState currentPlayerState;
+	Rigidbody playerRb;
 
 	float xRotation = 0f;
 	float yRotation = 0f;

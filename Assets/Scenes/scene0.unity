@@ -3434,6 +3434,9 @@ MonoBehaviour:
   jumpSpeed: 15
   wallRunDist: 1
   minWallrunSpeed: 0.1
+  wallclimbSpeed: 10
+  grapple: {fileID: 1995415718}
+  cam: {fileID: 577906425}
   currentState: 0
 --- !u!54 &1263359956
 Rigidbody:
