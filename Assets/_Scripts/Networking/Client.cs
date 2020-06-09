@@ -331,6 +331,7 @@ public class Client : MonoBehaviour {
             { (int) ServerPackets.playerDisconnected, ClientHandle.PlayerDisconnected },
             { (int) ServerPackets.playerHealth, ClientHandle.PlayerHealth },
             { (int) ServerPackets.playerRespawned, ClientHandle.PlayerRespawned },
+            { (int) ServerPackets.playerWallrunning, ClientHandle.PlayerWallrunning },
         };
 
         Debug.Log("Initialized packets.");

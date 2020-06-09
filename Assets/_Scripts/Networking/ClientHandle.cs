@@ -71,6 +71,13 @@ public class ClientHandle : MonoBehaviour {
 		GameManager.players[id].transform.rotation = rotation;
 	}
 
+	// TODO: On wallrun packet received, raise event that clamps rotation
+	public static void  PlayerWallrunning(Packet packet) {
+		int id = packet.ReadInt();
+
+		GameManager.players[id].GetComponentInChildren<CameraController>().Wallrun(packet.ReadInt(), packet.ReadVector3());
+	}
+
 	public static void PlayerDisconnected(Packet packet) {
 		int id = packet.ReadInt();
 

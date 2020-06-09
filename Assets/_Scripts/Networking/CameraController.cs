@@ -9,13 +9,18 @@ public class CameraController : MonoBehaviour {
 
     private float verticalRotation;
     private float horizontalRotation;
+    private float tilt;
+    private float wallrunHorizontalRotation;
 
-    // Start is called before the first frame update
-    void Start() {
+    private int wallrunning = 0;
+	private Vector3 vectorAlongWall;
+
+	// Start is called before the first frame update
+	void Start() {
         // Init rotations
         verticalRotation = transform.localEulerAngles.x;
         horizontalRotation = player.transform.eulerAngles.y;
-    }
+}
 
     // Update is called once per frame
     void Update() {
@@ -38,13 +43,93 @@ public class CameraController : MonoBehaviour {
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = -Input.GetAxis("Mouse Y");
 
-        verticalRotation += mouseY * sensitivity * Time.deltaTime;
-        horizontalRotation += mouseX * sensitivity * Time.deltaTime;
+        float angleOfWall;
 
+        switch (wallrunning) {
+            case -1:
+                // Set the camera z-tilt angle
+                tilt = Mathf.Lerp(GetSignedAngle(transform.localEulerAngles.z), -10, Time.deltaTime * 10);
+
+                // Get the global angle of the wall in terms of Vector3.forward
+                angleOfWall = Vector3.SignedAngle(Vector3.forward, vectorAlongWall + player.transform.right * 0.2f, Vector3.up) + 360; // Adding player.transform.right * 0.2f adjusts for the angle produced by keeping the player on the wall
+                // Wrap the angle from 0 to 360
+                angleOfWall = Mathf.Repeat(angleOfWall, 360);
+
+                // Get the mouse input during the wallrun and clamp it
+                wallrunHorizontalRotation += mouseX * sensitivity * Time.deltaTime;
+                wallrunHorizontalRotation = Mathf.Clamp(wallrunHorizontalRotation, -5, 50);
+
+                // Set the player's rotation to the angle of the wall
+                horizontalRotation = Mathf.Lerp(horizontalRotation, angleOfWall, Time.deltaTime * 10);
+
+                // If the player rotation is away from the wall
+                if (horizontalRotation > angleOfWall)
+                    // Add rotation away from the wall to the camera rotation
+                    wallrunHorizontalRotation += (horizontalRotation - angleOfWall) * Time.deltaTime * 10;
+
+                break;
+
+            case 1:
+                // Set the camera z-tilt angle
+                tilt = Mathf.Lerp(GetSignedAngle(transform.localEulerAngles.z), 10, Time.deltaTime * 10);
+
+                // Get the global angle of the wall in terms of Vector3.forward
+                angleOfWall = Vector3.SignedAngle(Vector3.forward, vectorAlongWall - player.transform.right * 0.2f, Vector3.up) + 360;
+                // Wrap the angle from 0 to 360
+                angleOfWall = Mathf.Repeat(angleOfWall, 360);
+
+                // Get the mouse input during the wallrun and clamp it
+                wallrunHorizontalRotation += mouseX * sensitivity * Time.deltaTime;
+                wallrunHorizontalRotation = Mathf.Clamp(wallrunHorizontalRotation, -50, 5);
+
+                // Set the player's rotation to the angle of the wall
+                horizontalRotation = Mathf.Lerp(horizontalRotation, angleOfWall, Time.deltaTime * 10);
+
+                // If the player rotation is away from the wall
+                if (horizontalRotation < angleOfWall)
+                    // Add rotation away from the wall to the camera rotation
+                    wallrunHorizontalRotation += (horizontalRotation - angleOfWall) * Time.deltaTime * 10;
+
+                break;
+
+            default:
+                // Get mouse input and wrap it from 0 to 360
+                horizontalRotation += mouseX * sensitivity * Time.deltaTime;
+                horizontalRotation = Mathf.Repeat(horizontalRotation, 360);
+
+                // Lerp the the camera rotation to 0
+                wallrunHorizontalRotation = Mathf.Lerp(wallrunHorizontalRotation, 0, Time.deltaTime * 10);
+
+                // Maintain the camera's direction by adding it to the mouse input
+                horizontalRotation += wallrunHorizontalRotation * Time.deltaTime * 10;
+
+                // Reset the camera z-tilt to 0
+                tilt = Mathf.Lerp(GetSignedAngle(transform.localEulerAngles.z), 0, Time.deltaTime * 10);
+                break;
+		}
+
+        // Get vertical mouse input and clamp it
+        verticalRotation += mouseY * sensitivity * Time.deltaTime;
         verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
 
-        transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
-        player.transform.rotation = Quaternion.Euler(0, horizontalRotation, 0);
+        // Set the rotations
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(verticalRotation, wallrunHorizontalRotation, tilt), Time.deltaTime * sensitivity);
+        player.transform.rotation = Quaternion.Slerp(player.transform.localRotation, Quaternion.Euler(0, horizontalRotation, 0), Time.deltaTime * sensitivity);
+        
+    }
+
+    /// <summary>
+    /// Gets a signed angle from -180 to 180
+    /// </summary>
+    /// <param name="angle">Angle</param>
+    /// <returns>Angle from -180 to 180</returns>
+    private float GetSignedAngle(float angle) {
+        return (angle > 180) ? angle - 360 : angle;
+	}
+
+    public void Wallrun(int direction, Vector3 vectorAlongWall) {
+        wallrunning = direction;
+        this.vectorAlongWall = vectorAlongWall;
 	}
 
     private void ToggleCursorMode() {
