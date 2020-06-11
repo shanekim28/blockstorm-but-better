@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     public PlayerManager player;
+    public GameObject viewModel;
+
+    public float swayAmount = 2f;
+    public float swaySpeed = 5f;
+	public float maxSway = 0.06f;
+
     public float sensitivity = 100f;
     public float clampAngle = 85f;
 
@@ -11,6 +17,8 @@ public class CameraController : MonoBehaviour {
     private float horizontalRotation;
     private float tilt;
     private float wallrunHorizontalRotation;
+
+    private Vector3 viewModelInitialPosition;
 
     private int wallrunning = 0;
 	private Vector3 vectorAlongWall;
@@ -20,6 +28,8 @@ public class CameraController : MonoBehaviour {
         // Init rotations
         verticalRotation = transform.localEulerAngles.x;
         horizontalRotation = player.transform.eulerAngles.y;
+
+        viewModelInitialPosition = viewModel.transform.localPosition;
 }
 
     // Update is called once per frame
@@ -115,7 +125,16 @@ public class CameraController : MonoBehaviour {
         // Set the rotations
         transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(verticalRotation, wallrunHorizontalRotation, tilt), Time.deltaTime * sensitivity);
         player.transform.rotation = Quaternion.Slerp(player.transform.localRotation, Quaternion.Euler(0, horizontalRotation, 0), Time.deltaTime * sensitivity);
-        
+
+        float swayX = -mouseX;
+        float swayY = mouseY;
+
+        swayX = Mathf.Clamp(swayX, -maxSway, maxSway);
+        swayY = Mathf.Clamp(swayY, -maxSway, maxSway);
+
+        Vector3 viewModelSwayPosition = new Vector3(swayX, swayY, 0) * swayAmount / 100;
+        viewModel.transform.localPosition = Vector3.Lerp(viewModel.transform.localPosition, viewModelInitialPosition + viewModelSwayPosition, Time.deltaTime * swaySpeed);
+
     }
 
     /// <summary>
