@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Security.Policy;
+using UnityEngine;
 
 public class ClientSend : MonoBehaviour {
 	/// <summary>
@@ -59,6 +60,12 @@ public class ClientSend : MonoBehaviour {
 		using (Packet packet = new Packet((int) ClientPackets.playerShoot)) {
 			packet.Write(facing);
 
+			SendUDPData(packet);
+		}
+	}
+
+	public static void PlayerReload() {
+		using (Packet packet = new Packet((int) ClientPackets.playerReload)) {
 			SendTCPData(packet);
 		}
 	}

@@ -18,7 +18,12 @@ ModelImporter:
   - first:
       74: -4795666461400094628
     second: RifleReload
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M4_Carbine
+    second: {fileID: 2100000, guid: 150d13df469c9994da429c9854593534, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -138,14 +143,14 @@ ModelImporter:
       takeName: Scene
       internalID: 0
       firstFrame: 276
-      lastFrame: 309
+      lastFrame: 284
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
-      cycleOffset: 2
+      cycleOffset: 20
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -157,7 +162,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ShootEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -186,7 +198,28 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.25762704
+        functionName: ReloadOutEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.70169497
+        functionName: ReloadInEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.86101687
+        functionName: ReloadSnapEvent
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

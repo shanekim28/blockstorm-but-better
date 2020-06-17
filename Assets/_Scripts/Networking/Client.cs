@@ -332,6 +332,9 @@ public class Client : MonoBehaviour {
             { (int) ServerPackets.playerHealth, ClientHandle.PlayerHealth },
             { (int) ServerPackets.playerRespawned, ClientHandle.PlayerRespawned },
             { (int) ServerPackets.playerWallrunning, ClientHandle.PlayerWallrunning },
+            { (int) ServerPackets.playerMovementAnimation, ClientHandle.PlayerMovementAnimation},
+            { (int) ServerPackets.playerShootAnimation, ClientHandle.PlayerShootAnimation},
+            { (int) ServerPackets.playerReloadAnimation, ClientHandle.PlayerReloadAnimation},
         };
 
         Debug.Log("Initialized packets.");

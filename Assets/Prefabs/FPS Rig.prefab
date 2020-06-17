@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7615178134040262375}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Distal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 728935763607192147}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Proximal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 189692518870404821}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lower Arm.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3575319248699792093}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pole Target.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4793441347528615010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Metacarpal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4978320718590184097}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Intermediate.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4811930755808982137}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Proximal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7502298378698902510}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Distal.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2948449688656599213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Distal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5959083401984611541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Distal.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3145467414331186525}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Proximal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6749739150509165355}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Armature.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3414337966111270948}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Distal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7579878541272731988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Upper Arm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6921518563092877244}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2948211939131576553}
   - component: {fileID: 8296172668906129789}
-  m_Layer: 0
+  - component: {fileID: 3481064825067346967}
+  - component: {fileID: 3108921503712387157}
+  m_Layer: 10
   m_Name: FPS Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,6 +517,119 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &3481064825067346967
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211688510750335738}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 2.67
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &3108921503712387157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2211688510750335738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9234f54c6c5f03140893c1763585056c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: fa4b5aa050bc2f0478342e2cf1117849, type: 3}
+  - {fileID: 8300000, guid: d98526df2449edd48bf736a5b8d1bc35, type: 3}
+  - {fileID: 8300000, guid: 8749e8133128a074c8e72d5362f01a47, type: 3}
+  - {fileID: 8300000, guid: bd381a21c9673a348ae416a4ccd1b4f3, type: 3}
 --- !u!1 &2226465811626613945
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4953573082377279250}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Distal.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6321078041570270655}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Distal.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +699,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1111875774735890115}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Magazine_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9108347732417920428}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lower Arm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7201411561959150820}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Carpal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 678005035457631448}
   - component: {fileID: 322057457734642529}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: basicRig:Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 792831416114127394}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Distal.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 993985689270005077}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Proximal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +984,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3785398645393389351}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pole Target.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -899,7 +1014,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3161749316365158270}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Proximal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,7 +1045,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7076256917224966914}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Carpal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -961,7 +1076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6411729329477845249}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Metacarpal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -992,7 +1107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3221323705509140070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Upper Arm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 404857000871052255}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lower Arm.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1053,7 +1168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6254052089031032564}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Distal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,7 +1199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3745015440037595577}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Intermediate.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1115,7 +1230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4258685759304085571}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Distal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,7 +1261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8518235604731166382}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Proximal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1177,7 +1292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4101233279107571124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Metacarpal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1208,7 +1323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2795268365328848799}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Proximal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9051084895894005990}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Intermediate.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1270,7 +1385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 307122550720757339}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Distal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,7 +1416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3883839766266900082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Proximal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1332,7 +1447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7539203056288479794}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Metacarpal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1363,7 +1478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5575675269987554595}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Distal.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1393,7 +1508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3596195441678944639}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand IK.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1543,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4861715914763698486}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Distal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1459,7 +1574,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7357698546179817367}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Distal.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1489,7 +1604,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8332948424158932919}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trigger_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1519,7 +1634,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 774284862514876748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lower Arm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1550,7 +1665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 108628367606802322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Distal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1581,7 +1696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1779347035989778367}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Proximal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1612,7 +1727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8715237593512768430}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Metacarpal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1643,7 +1758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2053008827956847368}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand IK.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1678,7 +1793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1514869635048765067}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Distal.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1708,7 +1823,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2113431881541051231}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1739,7 +1854,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 82848726414873993}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1775,7 +1890,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5010155833709858819}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Metacarpal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1806,7 +1921,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4023236141508491613}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Intermediate.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1837,7 +1952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 440734294443825847}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Intermediate.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1868,7 +1983,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 464258931644309007}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pole Target.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1899,7 +2014,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8366860898146195843}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1931,7 +2046,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7667507484021233952}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Metacarpal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1962,7 +2077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1849910931650330612}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Metacarpal.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1993,7 +2108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1460342228548377447}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2024,7 +2139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6643326606153548257}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Distal.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2054,7 +2169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3709603486167672606}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pole Target.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2085,7 +2200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 379155118579413333}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Metacarpal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2116,7 +2231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1622883232571252361}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Intermediate.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2147,7 +2262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7016248658994652462}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pinky Intermediate.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2179,7 +2294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1138984248474035001}
   - component: {fileID: 5829579169881791475}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: M4_Carbine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2218,7 +2333,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5856408921502264986, guid: c082244ae1f4ea549a2b3da3f937d0be, type: 3}
+  - {fileID: 2100000, guid: 150d13df469c9994da429c9854593534, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2263,7 +2378,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 623327710625508398}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Proximal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2294,7 +2409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3606472654072468747}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Distal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2325,7 +2440,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2259155565080626018}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ring Intermediate.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2356,7 +2471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4429685724562688773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Middle Distal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2387,7 +2502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6771646741415469768}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Thumb Metacarpal.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2418,7 +2533,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6182432314035815213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Index Distal.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}

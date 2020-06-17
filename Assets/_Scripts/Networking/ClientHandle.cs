@@ -98,4 +98,20 @@ public class ClientHandle : MonoBehaviour {
 		GameManager.players[id].Respawn();
 
 	}
+
+	public static void PlayerMovementAnimation(Packet packet) {
+		int id = packet.ReadInt();
+		int animationState = packet.ReadInt();
+		GameManager.players[id].AnimateMovement(animationState);
+	}
+
+	public static void PlayerShootAnimation(Packet packet) {
+		int id = packet.ReadInt();
+		GameManager.players[id].AnimateShoot();
+	}
+
+	public static void PlayerReloadAnimation(Packet packet) {
+		int id = packet.ReadInt();
+		GameManager.players[id].AnimateReload();
+	}
 }

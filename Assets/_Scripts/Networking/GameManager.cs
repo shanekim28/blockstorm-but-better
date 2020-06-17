@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     /// <summary>
-    /// Tracks client IDs and usernames linked to a client ID
+    /// Tracks PlayerManager components linked to a client ID
     /// </summary>
     public static Dictionary<int, PlayerManager> players = new Dictionary<int, PlayerManager>();
 

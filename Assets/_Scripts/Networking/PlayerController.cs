@@ -6,8 +6,12 @@ public class PlayerController : MonoBehaviour {
     public Transform camTransform;
 
 	private void Update() {
-		if (Input.GetMouseButtonDown(0)) {
+		if (Input.GetMouseButton(0)) {
             ClientSend.PlayerShoot(camTransform.forward);
+		}
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+            ClientSend.PlayerReload();
 		}
 	}
 
@@ -20,7 +24,7 @@ public class PlayerController : MonoBehaviour {
             Input.GetKey(KeyCode.A),
             Input.GetKey(KeyCode.S),
             Input.GetKey(KeyCode.D),
-            Input.GetKey(KeyCode.Space)
+            Input.GetKey(KeyCode.Space),
         };
 
         ClientSend.PlayerMovement(inputs);
