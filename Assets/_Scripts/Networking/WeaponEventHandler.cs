@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void ShootEvent();
+
+/// <summary>
+/// Handles animation events
+/// </summary>
 [RequireComponent(typeof(AudioSource))]
 public class WeaponEventHandler : MonoBehaviour {
+
+	public static event ShootEvent OnShoot;
+
 	public AudioClip[] audioClips;
 
 	AudioSource audioSource;
@@ -15,6 +23,7 @@ public class WeaponEventHandler : MonoBehaviour {
 	public void ShootEvent() {
 		audioSource.pitch = 1 + Random.Range(-0.1f, 0.1f);
 		audioSource.PlayOneShot(audioClips[0], 0.4f);
+		OnShoot?.Invoke();
 	}
 
 	public void ReloadOutEvent() {

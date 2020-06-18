@@ -6,22 +6,29 @@ public class CameraController : MonoBehaviour {
     public PlayerManager player;
     public GameObject viewModel;
 
+    [Tooltip("Amount of viewmodel sway")]
     public float swayAmount = 2f;
+    [Tooltip("Speed of viewmodel sway")]
     public float swaySpeed = 5f;
+    [Tooltip("Maximum viewmodel displacement")]
 	public float maxSway = 0.06f;
 
+    [Tooltip("Mouse sensitivity")]
     public float sensitivity = 100f;
+    [Tooltip("Maximum vertical look angle")]
     public float clampAngle = 85f;
 
-    private float verticalRotation;
-    private float horizontalRotation;
-    private float tilt;
-    private float wallrunHorizontalRotation;
+    private float verticalRotation; // Mouse Y
+    private float horizontalRotation; // Mouse X
+    private float tilt; // Wallrun tilt
+    private float wallrunHorizontalRotation; // Wallrun Mouse X
 
-    private Vector3 viewModelInitialPosition;
+    private Vector3 viewModelInitialPosition; // Initial position
 
-    private int wallrunning = 0;
-	private Vector3 vectorAlongWall;
+    private int wallrunDirection = 0; // Left, not wallrunning, and right are -1, 0, and 1, respectively
+	private Vector3 vectorAlongWall; // Vector along the wall the player is currently wallrunning on
+
+    private ShootEvent shootEvent;
 
 	// Start is called before the first frame update
 	void Start() {
@@ -29,7 +36,9 @@ public class CameraController : MonoBehaviour {
         verticalRotation = transform.localEulerAngles.x;
         horizontalRotation = player.transform.eulerAngles.y;
 
+        // Init position
         viewModelInitialPosition = viewModel.transform.localPosition;
+        WeaponEventHandler.OnShoot += Recoil;
 }
 
     // Update is called once per frame
@@ -55,7 +64,7 @@ public class CameraController : MonoBehaviour {
 
         float angleOfWall;
 
-        switch (wallrunning) {
+        switch (wallrunDirection) {
             case -1:
                 // Set the camera z-tilt angle
                 tilt = Mathf.Lerp(GetSignedAngle(transform.localEulerAngles.z), -10, Time.deltaTime * 10);
@@ -122,6 +131,8 @@ public class CameraController : MonoBehaviour {
         verticalRotation += mouseY * sensitivity * Time.deltaTime;
         verticalRotation = Mathf.Clamp(verticalRotation, -clampAngle, clampAngle);
 
+        // TODO: Add recoil
+
         // Set the rotations
         transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(verticalRotation, wallrunHorizontalRotation, tilt), Time.deltaTime * sensitivity);
         player.transform.rotation = Quaternion.Slerp(player.transform.localRotation, Quaternion.Euler(0, horizontalRotation, 0), Time.deltaTime * sensitivity);
@@ -146,8 +157,13 @@ public class CameraController : MonoBehaviour {
         return (angle > 180) ? angle - 360 : angle;
 	}
 
+    /// <summary>
+    /// Starts wallrunning
+    /// </summary>
+    /// <param name="direction">Left, center, or right</param>
+    /// <param name="vectorAlongWall">Vector along the wall the player is wallrunning on</param>
     public void Wallrun(int direction, Vector3 vectorAlongWall) {
-        wallrunning = direction;
+        wallrunDirection = direction;
         this.vectorAlongWall = vectorAlongWall;
 	}
 
@@ -159,5 +175,11 @@ public class CameraController : MonoBehaviour {
 		} else {
             Cursor.lockState = CursorLockMode.None;
 		}
+	}
+
+    // TODO: Move to server-side
+    private void Recoil() {
+        verticalRotation -= Random.Range(0.2f, 0.5f);
+        horizontalRotation += Random.Range(-0.5f, 0.5f);
 	}
 }

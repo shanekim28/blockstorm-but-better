@@ -71,13 +71,22 @@ public class ClientHandle : MonoBehaviour {
 		GameManager.players[id].transform.rotation = rotation;
 	}
 
-	// TODO: On wallrun packet received, raise event that clamps rotation
+	/// <summary>
+	/// Handles the PlayerWallrunning packet by calling the CameraController's Wallrun method
+	/// </summary>
+	/// <param name="packet">Contains ID, wallrun direction, and a vector along the wall</param>
 	public static void  PlayerWallrunning(Packet packet) {
 		int id = packet.ReadInt();
+		int direction = packet.ReadInt();
+		Vector3 vectorAlongWall = packet.ReadVector3();
 
-		GameManager.players[id].GetComponentInChildren<CameraController>().Wallrun(packet.ReadInt(), packet.ReadVector3());
+		GameManager.players[id].GetComponentInChildren<CameraController>().Wallrun(direction, vectorAlongWall);
 	}
 
+	/// <summary>
+	/// Removes a player from the game
+	/// </summary>
+	/// <param name="packet">Contains ID of player to remove</param>
 	public static void PlayerDisconnected(Packet packet) {
 		int id = packet.ReadInt();
 
@@ -85,6 +94,10 @@ public class ClientHandle : MonoBehaviour {
 		GameManager.players.Remove(id);
 	}
 
+	/// <summary>
+	/// Sets the health of a player
+	/// </summary>
+	/// <param name="packet">Contains ID and health of player</param>
 	public static void PlayerHealth(Packet packet) {
 		int id = packet.ReadInt();
 		float health = packet.ReadFloat();
@@ -92,26 +105,45 @@ public class ClientHandle : MonoBehaviour {
 		GameManager.players[id].SetHealth(health);
 	}
 
+	/// <summary>
+	/// Respawns a player by calling the GameManager's Respawn method
+	/// </summary>
+	/// <param name="packet">Contains ID of player to respawn</param>
 	public static void PlayerRespawned (Packet packet) {
 		int id = packet.ReadInt();
 
 		GameManager.players[id].Respawn();
-
 	}
 
+	/// <summary>
+	/// Animates player movement
+	/// </summary>
+	/// <param name="packet">Contains ID and animation state</param>
 	public static void PlayerMovementAnimation(Packet packet) {
 		int id = packet.ReadInt();
 		int animationState = packet.ReadInt();
 		GameManager.players[id].AnimateMovement(animationState);
 	}
 
+	/// <summary>
+	/// Animates player shooting
+	/// </summary>
+	/// <param name="packet">Contains ID</param>
 	public static void PlayerShootAnimation(Packet packet) {
 		int id = packet.ReadInt();
-		GameManager.players[id].AnimateShoot();
+		int ammo = packet.ReadInt();
+		GameManager.players[id].AnimateShoot(ammo);
 	}
 
+	/// <summary>
+	/// Animates player reloading
+	/// </summary>
+	/// <param name="packet">Contains ID</param>
 	public static void PlayerReloadAnimation(Packet packet) {
 		int id = packet.ReadInt();
-		GameManager.players[id].AnimateReload();
+		int ammo = packet.ReadInt();
+		float reloadTime = packet.ReadFloat();
+
+		GameManager.players[id].AnimateReload(ammo, reloadTime);
 	}
 }

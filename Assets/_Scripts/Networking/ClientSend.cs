@@ -56,6 +56,10 @@ public class ClientSend : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Creates a packet with player direction and sends it to the server
+	/// </summary>
+	/// <param name="facing">The direction of the player</param>
 	public static void PlayerShoot(Vector3 facing) {
 		using (Packet packet = new Packet((int) ClientPackets.playerShoot)) {
 			packet.Write(facing);
@@ -64,6 +68,9 @@ public class ClientSend : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Creates an empty packet and sends it to the server
+	/// </summary>
 	public static void PlayerReload() {
 		using (Packet packet = new Packet((int) ClientPackets.playerReload)) {
 			SendTCPData(packet);
