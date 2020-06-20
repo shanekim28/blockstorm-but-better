@@ -136,11 +136,17 @@ public class ClientHandle : MonoBehaviour {
 	/// Animates player shooting
 	/// </summary>
 	/// <param name="packet">Contains ID</param>
-	public static void PlayerShootAnimation(Packet packet) {
+	public static void PlayerShoot(Packet packet) {
 		int id = packet.ReadInt();
 		int ammo = packet.ReadInt();
-		GameManager.players[id].AnimateShoot(ammo);
+		Vector3 direction = packet.ReadVector3();
 
+		// If local player
+		if (id == Client.instance.myId)
+			GameManager.players[id].AnimateShoot();
+
+		// TODO: Add non-local player animations
+		GameManager.players[id].Shoot(id, ammo, direction);
 		OnShoot?.Invoke();
 	}
 
@@ -148,12 +154,19 @@ public class ClientHandle : MonoBehaviour {
 	/// Animates player reloading
 	/// </summary>
 	/// <param name="packet">Contains ID</param>
-	public static void PlayerReloadAnimation(Packet packet) {
+	public static void PlayerReload(Packet packet) {
 		int id = packet.ReadInt();
 		int ammo = packet.ReadInt();
 		float reloadTime = packet.ReadFloat();
 
-		GameManager.players[id].AnimateReload(ammo, reloadTime);
+		// If local player
+		if (id == Client.instance.myId) {
+			GameManager.players[id].AnimateReload();
+		}
+
+		// TODO: Add non-local player animations
+
+		GameManager.players[id].Reload(ammo, reloadTime);
 	}
 
 	/// <summary>

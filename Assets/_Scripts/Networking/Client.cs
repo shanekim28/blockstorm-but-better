@@ -333,8 +333,8 @@ public class Client : MonoBehaviour {
             { (int) ServerPackets.playerRespawned, ClientHandle.PlayerRespawned },
             { (int) ServerPackets.playerWallrunning, ClientHandle.PlayerWallrunning },
             { (int) ServerPackets.playerMovementAnimation, ClientHandle.PlayerMovementAnimation },
-            { (int) ServerPackets.playerShootAnimation, ClientHandle.PlayerShootAnimation },
-            { (int) ServerPackets.playerReloadAnimation, ClientHandle.PlayerReloadAnimation },
+            { (int) ServerPackets.playerShoot, ClientHandle.PlayerShoot },
+            { (int) ServerPackets.playerReload, ClientHandle.PlayerReload },
             { (int) ServerPackets.playAudio, ClientHandle.PlayAudio },
         };
 

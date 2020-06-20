@@ -14,8 +14,8 @@ public enum ServerPackets {
     playerRespawned,
     playerWallrunning,
     playerMovementAnimation,
-    playerShootAnimation,
-    playerReloadAnimation,
+    playerShoot,
+    playerReload,
     playAudio,
 }
 
