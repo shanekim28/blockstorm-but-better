@@ -28,8 +28,6 @@ public class CameraController : MonoBehaviour {
     private int wallrunDirection = 0; // Left, not wallrunning, and right are -1, 0, and 1, respectively
 	private Vector3 vectorAlongWall; // Vector along the wall the player is currently wallrunning on
 
-    private ShootEvent shootEvent;
-
 	// Start is called before the first frame update
 	void Start() {
         // Init rotations
@@ -38,7 +36,7 @@ public class CameraController : MonoBehaviour {
 
         // Init position
         viewModelInitialPosition = viewModel.transform.localPosition;
-        WeaponEventHandler.OnShoot += Recoil;
+        ClientHandle.OnShoot += Recoil;
 }
 
     // Update is called once per frame

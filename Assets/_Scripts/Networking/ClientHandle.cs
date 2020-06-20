@@ -1,10 +1,17 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using UnityEngine;
+
+public delegate void ShootEvent();
+
+// TODO: Spawn graphics on player shoot
 
 /// <summary>
 /// Handles incoming packets from the server
 /// </summary>
 public class ClientHandle : MonoBehaviour {
+	public static event ShootEvent OnShoot; // Raises the OnShoot event
+
 	/// <summary>
 	/// Handles the Welcome packet by getting a message and client ID from the server, then connects via UDP
 	/// </summary>
@@ -133,6 +140,8 @@ public class ClientHandle : MonoBehaviour {
 		int id = packet.ReadInt();
 		int ammo = packet.ReadInt();
 		GameManager.players[id].AnimateShoot(ammo);
+
+		OnShoot?.Invoke();
 	}
 
 	/// <summary>
@@ -145,5 +154,30 @@ public class ClientHandle : MonoBehaviour {
 		float reloadTime = packet.ReadFloat();
 
 		GameManager.players[id].AnimateReload(ammo, reloadTime);
+	}
+
+	/// <summary>
+	/// Plays an audio clip at a specified location or player location
+	/// </summary>
+	/// <param name="packet">Contains ID, audio clip to play, and optional location</param>
+	public static void PlayAudio(Packet packet) {
+		int id = packet.ReadInt();
+		string audioClip = packet.ReadString();
+		float volume = packet.ReadFloat();
+		float pitch = packet.ReadFloat();
+		Vector3? location;
+
+		// If we can read a Vector3 from the packet, we can play a clip at that location
+		try {
+			location = packet.ReadVector3();
+		} catch (Exception e) {
+			location = null;
+		}
+
+		if (!location.HasValue) {
+			AudioManager.instance.PlaySound(audioClip, id, volume, pitch);
+		} else {
+			AudioManager.instance.PlaySound(audioClip, location ?? Vector3.zero, volume, pitch);
+		}
 	}
 }

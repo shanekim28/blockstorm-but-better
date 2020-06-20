@@ -16,6 +16,7 @@ public enum ServerPackets {
     playerMovementAnimation,
     playerShootAnimation,
     playerReloadAnimation,
+    playAudio,
 }
 
 /// <summary>Sent from client to server. Enumerated via unique packet ID</summary>
