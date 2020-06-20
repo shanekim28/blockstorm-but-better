@@ -40,6 +40,8 @@ public class ClientHandle : MonoBehaviour {
 	/// </summary>
 	/// <param name="packet">Contains ID, username, position, and rotation</param>
 	public static void SpawnPlayer(Packet packet) {
+		Debug.Log("Spawned player");
+
 		// Reads the id and username
 		int id = packet.ReadInt();
 		string username = packet.ReadString();
@@ -61,8 +63,11 @@ public class ClientHandle : MonoBehaviour {
 		int id = packet.ReadInt();
 		Vector3 position = packet.ReadVector3();
 
-		// Apply it by getting the PlayerManager's transform
-		GameManager.players[id].transform.position = position;
+		if (GameManager.players.ContainsKey(id)) {
+			// Apply it by getting the PlayerManager's transform
+			GameManager.players[id].transform.position = position;
+		}
+		
 	}
 
 	/// <summary>
@@ -74,8 +79,11 @@ public class ClientHandle : MonoBehaviour {
 		int id = packet.ReadInt();
 		Quaternion rotation = packet.ReadQuaternion();
 
-		// Apply it by getting the PlayerManager's transform
-		GameManager.players[id].transform.rotation = rotation;
+		if (GameManager.players.ContainsKey(id)) {
+			// Apply it by getting the PlayerManager's transform
+			GameManager.players[id].transform.rotation = rotation;
+		}
+		
 	}
 
 	/// <summary>
@@ -86,8 +94,9 @@ public class ClientHandle : MonoBehaviour {
 		int id = packet.ReadInt();
 		int direction = packet.ReadInt();
 		Vector3 vectorAlongWall = packet.ReadVector3();
-
-		GameManager.players[id].GetComponentInChildren<CameraController>().Wallrun(direction, vectorAlongWall);
+		
+		if (GameManager.players.ContainsKey(id))
+			GameManager.players[id].GetComponentInChildren<CameraController>().Wallrun(direction, vectorAlongWall);
 	}
 
 	/// <summary>
@@ -109,7 +118,8 @@ public class ClientHandle : MonoBehaviour {
 		int id = packet.ReadInt();
 		float health = packet.ReadFloat();
 
-		GameManager.players[id].SetHealth(health);
+		if (GameManager.players.ContainsKey(id))
+			GameManager.players[id].SetHealth(health);
 	}
 
 	/// <summary>
@@ -119,7 +129,8 @@ public class ClientHandle : MonoBehaviour {
 	public static void PlayerRespawned (Packet packet) {
 		int id = packet.ReadInt();
 
-		GameManager.players[id].Respawn();
+		if (GameManager.players.ContainsKey(id))
+			GameManager.players[id].Respawn();
 	}
 
 	/// <summary>
@@ -129,7 +140,9 @@ public class ClientHandle : MonoBehaviour {
 	public static void PlayerMovementAnimation(Packet packet) {
 		int id = packet.ReadInt();
 		int animationState = packet.ReadInt();
-		GameManager.players[id].AnimateMovement(animationState);
+
+		if (GameManager.players.ContainsKey(id))
+			GameManager.players[id].AnimateMovement(animationState);
 	}
 
 	/// <summary>
@@ -146,7 +159,8 @@ public class ClientHandle : MonoBehaviour {
 			GameManager.players[id].AnimateShoot();
 
 		// TODO: Add non-local player animations
-		GameManager.players[id].Shoot(id, ammo, direction);
+		if (GameManager.players.ContainsKey(id))
+			GameManager.players[id].Shoot(id, ammo, direction);
 		OnShoot?.Invoke();
 	}
 
@@ -165,8 +179,8 @@ public class ClientHandle : MonoBehaviour {
 		}
 
 		// TODO: Add non-local player animations
-
-		GameManager.players[id].Reload(ammo, reloadTime);
+		if (GameManager.players.ContainsKey(id))
+			GameManager.players[id].Reload(ammo, reloadTime);
 	}
 
 	/// <summary>
